@@ -43,6 +43,10 @@ namespace WebApi.Controllers
         {
             service.TaskListDelete(id);
             return null;
+        } 
+        [HttpGet("lists/{listid}/tasks")]
+        public ActionResult<IEnumerable<TaskList>> GetTasksById(int listid){
+            return service.GetTasksByListId(listid,true);
         }
     }
 }

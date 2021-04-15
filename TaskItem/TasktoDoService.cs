@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using System.Data.Common;
 using System.Net;
 using System.Collections;
@@ -37,10 +38,10 @@ namespace WebApi.TaskItem
         }
         public List<TasktoDo> ReadTasktoDo()
         {
-           
-                List<TasktoDo> tasks = _context.TasktoDos.ToList();               
-                return tasks;
-    
+
+            List<TasktoDo> tasks = _context.TasktoDos.ToList();
+            return tasks;
+
         }
         public TasktoDo GetTasktoDoById(int id)
         {
@@ -60,7 +61,7 @@ namespace WebApi.TaskItem
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
                 _context.Database.OpenConnection();
-                command.CommandText = "select t.task_id,Count(t.done),l.title from taskto_dos t right join task_list l on  t.task_id=l.id where t.done=false group by l.id,t.task_id;";
+                command.CommandText = "select t.task_list_id,Count(t.done),l.title from taskto_dos t right join task_list l on  t.task_list_id=l.id where t.done=false group by l.id,t.task_list_id;";
                 using (var result = command.ExecuteReader())
                 {
                     while (result.Read())
@@ -82,6 +83,16 @@ namespace WebApi.TaskItem
             Where(t => t.DueDate.Date == DateTime.Today).
             Include(t => t.TaskList).
             ToList();
+        }
+        public List<TasktoDo> GetTasksByListId(int listid, bool all = false)
+        {
+            if (all)
+            {
+                return _context.TasktoDos.Where(t => t.TaskListId == listid)
+                .ToList();
+            }
+            return _context.TasktoDos.Where(t => t.TaskListId == listid)
+                .Where(t => t.Done == false).ToList();
         }
     }
 }

@@ -67,5 +67,9 @@ namespace WebApi.Controllers
         {
             return service.GetTodayTasks();
         }
+        [HttpGet("lists/{listid}/tasks")]
+        public ActionResult<IEnumerable<TasktoDo>> GetTasksById(int listid, bool all){
+            return service.GetTasksByListId(listid,all);
+        }
     }
 }

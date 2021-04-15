@@ -57,11 +57,7 @@ namespace WebApi.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("due_date");
 
-                    b.Property<int>("TaskId")
-                        .HasColumnType("integer")
-                        .HasColumnName("task_id");
-
-                    b.Property<int?>("TaskListId")
+                    b.Property<int>("TaskListId")
                         .HasColumnType("integer")
                         .HasColumnName("task_list_id");
 
@@ -83,7 +79,9 @@ namespace WebApi.Migrations
                     b.HasOne("WebApi.Models.TaskList", "TaskList")
                         .WithMany("TasktoDo")
                         .HasForeignKey("TaskListId")
-                        .HasConstraintName("fk_taskto_dos_task_list_task_list_id");
+                        .HasConstraintName("fk_taskto_dos_task_list_task_list_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("TaskList");
                 });

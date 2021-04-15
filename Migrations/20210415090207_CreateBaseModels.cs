@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace WebApi.Migrations
 {
-    public partial class FirstInit : Migration
+    public partial class CreateBaseModels : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,8 +31,7 @@ namespace WebApi.Migrations
                     desc = table.Column<string>(type: "text", nullable: true),
                     done = table.Column<bool>(type: "boolean", nullable: false),
                     due_date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    task_list_id = table.Column<int>(type: "integer", nullable: true),
-                    task_id = table.Column<int>(type: "integer", nullable: false)
+                    task_list_id = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,7 +41,7 @@ namespace WebApi.Migrations
                         column: x => x.task_list_id,
                         principalTable: "task_list",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

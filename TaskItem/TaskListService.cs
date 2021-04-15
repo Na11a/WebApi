@@ -37,6 +37,10 @@ namespace WebApi.TaskItem
         public TaskList TastListReadById(int id)
         {
             return _context.TaskList.Find(id);
+        } 
+        public List<TaskList> GetTasksByListId(int listid, bool all)
+        {
+            return _context.TaskList.ToList();
         }
        
     }
