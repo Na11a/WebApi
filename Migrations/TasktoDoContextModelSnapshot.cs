@@ -53,11 +53,11 @@ namespace WebApi.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("done");
 
-                    b.Property<DateTime>("DueDate")
+                    b.Property<DateTime?>("DueDate")
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("due_date");
 
-                    b.Property<int>("TaskListId")
+                    b.Property<int?>("TaskListId")
                         .HasColumnType("integer")
                         .HasColumnName("task_list_id");
 
@@ -76,14 +76,10 @@ namespace WebApi.Migrations
 
             modelBuilder.Entity("WebApi.Models.TasktoDo", b =>
                 {
-                    b.HasOne("WebApi.Models.TaskList", "TaskList")
+                    b.HasOne("WebApi.Models.TaskList", null)
                         .WithMany("TasktoDo")
                         .HasForeignKey("TaskListId")
-                        .HasConstraintName("fk_taskto_dos_task_list_task_list_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TaskList");
+                        .HasConstraintName("fk_taskto_dos_task_list_task_list_id");
                 });
 
             modelBuilder.Entity("WebApi.Models.TaskList", b =>

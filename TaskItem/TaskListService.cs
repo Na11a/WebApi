@@ -17,6 +17,7 @@ namespace WebApi.TaskItem
         }
         public void TaskListCreate(TaskList model)
         {
+            Console.WriteLine(model);
             _context.TaskList.Add(model);
             _context.SaveChanges();
         }

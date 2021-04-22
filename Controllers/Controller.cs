@@ -27,49 +27,45 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<TasktoDo> GetTasktoDoById(int id)
-        {
-            return service.GetTasktoDoById(id);
-        }
+        public ActionResult<TasktoDo> GetTasktoDoById(int id) => service.GetTasktoDoById(id);
 
         [HttpPost("")]
-        public void PostTasktoDo(TasktoDo model)
+        public TasktoDo PostTasktoDo(TasktoDo model)
         {
             service.CreateTasktoDo(model);
+            return model;
         }
 
         [HttpPut("{id}")]
         public IActionResult PutTasktoDo(int id, TasktoDo model)
         {
             service.UpdateTasktoDo(model, id);
-            return NoContent();
+            return Ok(service.GetTasksByListId(id));
         }
 
         [HttpDelete("{id}")]
         public ActionResult<TasktoDo> DeleteTasktoDoById(int id)
         {
             service.DeleteTasktoDo(id);
-            return null;
+            return NoContent();         
         }
 
-        [HttpGet("/{listid}")]
-        public void GetTasksByList(int listid)
-        {
-
-        }
         [HttpGet("dashboard/")]
         public ActionResult<Dashboard> GetDashboard()
         {
             return service.GetDashboard();
         }
-        [HttpGet("colections/today")]
-        public ActionResult<IEnumerable<TasktoDo>> GetTodayTask()
-        {
-            return service.GetTodayTasks();
-        }
+
+        // [HttpGet("colections/today")]
+        // public ActionResult<IEnumerable<TasktoDo>> GetTodayTask()
+        // {
+        //     return service.GetTodayTasks();
+        // }
+
         [HttpGet("lists/{listid}/tasks")]
-        public ActionResult<IEnumerable<TasktoDo>> GetTasksById(int listid, bool all){
-            return service.GetTasksByListId(listid,all);
+        public ActionResult<IEnumerable<TasktoDo>> GetTasksById(int listid, bool all)
+        {
+            return service.GetTasksByListId(listid, all);
         }
     }
 }

@@ -42,3 +42,13 @@
 /home/intern/simmax/WebApi/bin/Debug/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 /home/intern/simmax/WebApi/bin/Debug/net5.0/Newtonsoft.Json.dll
 /home/intern/simmax/WebApi/bin/Debug/net5.0/Newtonsoft.Json.Bson.dll
+/home/intern/simmax/WebApi/bin/Debug/net5.0/WebApi.Views.dll
+/home/intern/simmax/WebApi/bin/Debug/net5.0/WebApi.Views.pdb
+/home/intern/simmax/WebApi/obj/Debug/net5.0/WebApi.RazorAssemblyInfo.cache
+/home/intern/simmax/WebApi/obj/Debug/net5.0/WebApi.RazorAssemblyInfo.cs
+/home/intern/simmax/WebApi/obj/Debug/net5.0/WebApi.TagHelpers.input.cache
+/home/intern/simmax/WebApi/obj/Debug/net5.0/WebApi.TagHelpers.output.cache
+/home/intern/simmax/WebApi/obj/Debug/net5.0/WebApi.RazorCoreGenerate.cache
+/home/intern/simmax/WebApi/obj/Debug/net5.0/Razor/Views/TasktoDo/Index.cshtml.g.cs
+/home/intern/simmax/WebApi/obj/Debug/net5.0/WebApi.RazorTargetAssemblyInfo.cs
+/home/intern/simmax/WebApi/obj/Debug/net5.0/WebApi.Views.pdb

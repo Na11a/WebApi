@@ -12,12 +12,11 @@ namespace WebApi.Models
         public string Title { get; set; }
         public string Desc { get; set; }
         public bool Done { get; set; }
-        public DateTime DueDate { get; set; }
-        public TaskList TaskList {get;set;}
-        public int TaskListId {get;set;}
+        public DateTime? DueDate { get; set; }
+        public int? TaskListId {get;set;}
     }
     public class Dashboard{
-        public int NotToday {get;set;}
+        public int TasksForToday {get;set;}
         public List<TaskListDTO> TaskListDTOs {get;set;}
     }
     public class TaskListDTO{

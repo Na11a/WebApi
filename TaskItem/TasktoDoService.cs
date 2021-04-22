@@ -53,10 +53,10 @@ namespace WebApi.TaskItem
             Dashboard dashboard = new Dashboard();
             dashboard.TaskListDTOs = taskLists;
 
-            int tasksToday = _context.TasktoDos.ToList().
-            Where(task => task.DueDate.Date == DateTime.Today).
+            int tasksToday = _context.TasktoDos.
+            Where(task => task.DueDate.Value.Date == DateTime.Today).
             Count();
-            dashboard.NotToday = tasksToday.Equals(null) ? 0 : tasksToday;
+            dashboard.TasksForToday = tasksToday.Equals(null) ? 0 : tasksToday;
 
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
@@ -77,13 +77,13 @@ namespace WebApi.TaskItem
             }
             return dashboard;
         }
-        public List<TasktoDo> GetTodayTasks()
-        {
-            return _context.TasktoDos.
-            Where(t => t.DueDate.Date == DateTime.Today).
-            Include(t => t.TaskList).
-            ToList();
-        }
+        // public List<TasktoDo> GetTodayTasks()
+        // {
+        //     return _context.TasktoDos.
+        //     Where(t => t.DueDate.Date == DateTime.Today).
+        //     Include(t => t.TaskList).
+        //     ToList();
+        // }
         public List<TasktoDo> GetTasksByListId(int listid, bool all = false)
         {
             if (all)
