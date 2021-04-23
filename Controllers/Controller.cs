@@ -39,8 +39,8 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public IActionResult PutTasktoDo(int id, TasktoDo model)
         {
-            service.UpdateTasktoDo(model, id);
-            return Ok(service.GetTasksByListId(id));
+            service.UpdateTasktoDo(model);
+            return Ok(model);
         }
 
         [HttpDelete("{id}")]

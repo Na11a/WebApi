@@ -15617,12 +15617,6 @@
     "CSharpLanguageVersion": 900
   },
   "RootNamespace": "WebApi",
-  "Documents": [
-    {
-      "FilePath": "/home/intern/simmax/WebApi/Views/tasktodo/Index.cshtml",
-      "TargetPath": "Views\\tasktodo\\Index.cshtml",
-      "FileKind": "mvc"
-    }
-  ],
+  "Documents": [],
   "SerializationFormat": "0.2"
 }

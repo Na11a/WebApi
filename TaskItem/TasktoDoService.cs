@@ -21,11 +21,10 @@ namespace WebApi.TaskItem
             _context.TasktoDos.Add(item);
             _context.SaveChanges();
         }
-        public void UpdateTasktoDo(TasktoDo item, int id)
+        public void UpdateTasktoDo(TasktoDo item)
         {
             using (_context)
             {
-                item.Id = id;
                 _context.TasktoDos.Update(item);
                 _context.SaveChanges();
             }
